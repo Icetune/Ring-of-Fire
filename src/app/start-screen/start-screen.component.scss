@@ -21,9 +21,9 @@
     bottom: 50px;
     display: flex;
     justify-content: center;
-    
+
     img {
-        width: 40vw;
+        width: 35vw;
         max-width: 650px;
         height: auto;
 
@@ -31,5 +31,23 @@
             filter: brightness(1.5);
             cursor: pointer;
         }
+    }
+}
+
+@media (max-width: 1080px) {
+    
+    .start-screen {
+        img {
+            height: auto;
+        }
+    }
+
+    .start-label-box {
+        bottom: 36%;
+
+        img {
+            width: 45vw;
+        }
+
     }
 }
