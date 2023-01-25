@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ring-of-f-aed68": {
+      "hosting": {
+        "ringoffire": [
+          "ring-of-f-aed68"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ring-of-f-aed68"
+  }
+}
