@@ -106,8 +106,8 @@
             "prerender": false,
             "ssr": false,
             "browserTarget": "ringoffire:build:production",
-            "firebaseProject": "ring-of-f-aed68",
-            "firebaseHostingSite": "ring-of-f-aed68"
+            "firebaseProject": "ring-of-fire-ea4f3",
+            "firebaseHostingSite": "ring-of-fire-ea4f3"
           }
         }
       }

@@ -4,6 +4,8 @@ import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 
+import { Firestore, collectionData, collection, setDoc, doc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -12,11 +14,23 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 })
 export class GameComponent implements OnInit {
 
+  game: Game;
   pickCardAnimation = false;
   currentCard: string = '';
-  game: Game;
 
-  constructor(public dialog: MatDialog) { }
+  games$: Observable<any>;  //Observable ist eine Veriable, die sich updated
+
+  constructor(private firestore: Firestore, public dialog: MatDialog) {
+
+    const coll = collection(this.firestore, 'games');
+    this.games$ = collectionData(coll);
+    this.games$.subscribe((game) => {
+      console.log('Game Update', game);
+    });
+    
+  }
+
+
 
   ngOnInit(): void {
     this.newGame();
@@ -25,6 +39,12 @@ export class GameComponent implements OnInit {
 
   newGame() {
     this.game = new Game;
+
+    // this.firestore
+    //   .collection('games')
+    //   .add(this.game.toJSON());
+
+
   }
 
 
@@ -34,10 +54,10 @@ export class GameComponent implements OnInit {
       if (!this.pickCardAnimation) {
         this.currentCard = this.game.stack.pop();
         this.pickCardAnimation = true;
-  
+
         this.game.currentPlayer++;
         this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
-  
+
         setTimeout(() => {
           this.game.playedCards.push(this.currentCard);
           this.pickCardAnimation = false;
@@ -53,7 +73,7 @@ export class GameComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
     dialogRef.afterClosed().subscribe((name: string) => {
-      if(name && name.length > 0 && name.length < 12){
+      if (name && name.length > 0 && name.length < 12) {
         this.game.players.push(name);
       }
     });

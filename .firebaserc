@@ -6,9 +6,16 @@
           "ring-of-f-aed68"
         ]
       }
+    },
+    "ring-of-fire-ea4f3": {
+      "hosting": {
+        "ringoffire": [
+          "ring-of-fire-ea4f3"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "ring-of-f-aed68"
+    "default": "ring-of-fire-ea4f3"
   }
 }
