@@ -4,7 +4,7 @@ import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 
-import { Firestore, collectionData, collection, setDoc, doc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, addDoc, setDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -27,7 +27,7 @@ export class GameComponent implements OnInit {
     this.games$.subscribe((game) => {
       console.log('Game Update', game);
     });
-    
+
   }
 
 
@@ -37,15 +37,19 @@ export class GameComponent implements OnInit {
   }
 
 
-  newGame() {
+  async newGame() {
     this.game = new Game;
 
-    // this.firestore
-    //   .collection('games')
-    //   .add(this.game.toJSON());
+    const coll = collection(this.firestore, 'games');
+    // console.log('Document written with ID:', coll);
 
-
+    await addDoc(coll, this.game.toJSON() );
+    
+    // let gameInfo = await addDoc(coll, { game: this.game.toJSON() });
+    // console.log(gameInfo);
   }
+
+
 
 
 
