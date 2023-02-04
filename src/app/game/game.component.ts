@@ -30,7 +30,7 @@ export class GameComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.newGame();
+    this.newGame();    
 
     this.router.params.subscribe((param) => {
       console.log('Game ID: ', param['id']);
@@ -49,6 +49,10 @@ export class GameComponent implements OnInit {
           this.game.stack = game.stack;
         })
     });
+
+    // console.log(this.game);
+    // console.log(this.game.players);
+
   }
 
 
@@ -74,26 +78,14 @@ export class GameComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
-
-    console.log(this.game);
-    console.log(this.game.players);
-    
-
     dialogRef.afterClosed().subscribe((name: string) => {
       if (name && name.length > 0 && name.length < 12) {
-
-
-
 
 
         this.game.players.push(name);
 
 
-
-
-
-
-        // this.saveGame()
+        this.saveGame()
       }
     });
   }
