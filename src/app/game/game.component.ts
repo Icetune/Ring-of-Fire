@@ -47,12 +47,12 @@ export class GameComponent implements OnInit {
           this.game.playedCards = game.playedCards;
           this.game.players = game.players;
           this.game.stack = game.stack;
+
+          console.log(this.game);
+          console.log(this.game.players);
+
         })
     });
-
-    // console.log(this.game);
-    // console.log(this.game.players);
-
   }
 
 
@@ -81,6 +81,8 @@ export class GameComponent implements OnInit {
     dialogRef.afterClosed().subscribe((name: string) => {
       if (name && name.length > 0 && name.length < 12) {
 
+        console.log(this.game);
+        console.log(this.game.players);
 
         this.game.players.push(name);
 
