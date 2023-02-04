@@ -24,7 +24,7 @@ export class GameComponent implements OnInit {
 
 
 
-  constructor(private router: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {}
+  constructor(private router: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
 
 
@@ -40,48 +40,27 @@ export class GameComponent implements OnInit {
 
 
       this
-      .firestore
-      .collection("games")
-      .doc(param['id'])
-      .valueChanges()
-      .subscribe((game: any) => {
-        console.log('Game Update', game);
-        this.game.currentPlayer = game.currentPlayer;
-        this.game.playedCards = game.playedCards;
-        this.game.players = game.player;
-        this.game.stack = game.stack;
-      })
-  
+        .firestore
+        .collection("games")
+        .doc(param['id'])
+        .valueChanges()
+        .subscribe((game: any) => {
+          console.log('Game Update', game);
+          this.game.currentPlayer = game.currentPlayer;
+          this.game.playedCards = game.playedCards;
+          this.game.players = game.players;
+          this.game.stack = game.stack;
+        })
+
 
     });
 
 
-
-
-
-
-
-
-
-    // const coll = collection(this.firestore, 'games');
-    // console.log(coll);
-
-    // this.games$ = collectionData(coll);
-    // console.log(this.games$);
-
-    // this.games$.subscribe((game) => {
-    //   console.log('Game Update', game);
-    // });
-
   }
 
 
-  async newGame() {
+  newGame() {
     this.game = new Game;
-
-    // const coll = collection(this.firestore, 'games');
-    // await addDoc(coll, this.game.toJSON());
-
   }
 
 
