@@ -32,7 +32,7 @@ export class GameComponent implements OnInit {
     this.newGame();
 
     this.router.params.subscribe((param) => {
-      console.log('Game ID: ', param['id']);
+      // console.log('Game ID: ', param['id']);
       this.gameId = param['id'];
 
       this
@@ -41,7 +41,7 @@ export class GameComponent implements OnInit {
         .doc(this.gameId)
         .valueChanges()
         .subscribe((game: any) => {
-          console.log('Game Update', game);
+          // console.log('Game Update', game);
           this.game.currentPlayer = game.currentPlayer;
           this.game.playedCards = game.playedCards;
           this.game.players = game.players;
