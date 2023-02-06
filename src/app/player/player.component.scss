@@ -9,17 +9,21 @@
     color: white;
     background-image: linear-gradient(90deg, rgb(107, 107, 107), rgba(107, 107, 107, 0.5));
     box-shadow: 0 0 5px 0 black;
+    overflow: hidden;
 
     span {
         max-width: 200px;
-        font-size: 32px;
+        font-size: 24px;
         margin-left: 16px;
         text-shadow: 2px 2px black;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     img {
-        width: 70px;
-        height: 70px;
+        width: 50px;
+        height: 50px;
         object-fit: cover;
         border-radius: 100%;
     }
