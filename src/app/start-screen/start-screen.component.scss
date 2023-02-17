@@ -16,15 +16,13 @@
 
 .start-label-box {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 50px;
-    display: flex;
-    justify-content: center;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, 50%);
 
     img {
         width: 35vw;
-        max-width: 650px;
+        max-width: 600px;
         height: auto;
 
         &:hover {
@@ -43,8 +41,7 @@
     }
 
     .start-label-box {
-        bottom: 36%;
-
+        top: 55%;
         img {
             width: 45vw;
         }
